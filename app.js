@@ -16,6 +16,7 @@ const logger = winston.loggers.get('main');
 const Koa = require('koa');
 const Router = require('koa-router');
 const wechat = require('co-wechat');
+const wechat_handler = require('./lib/wechat-handlers');
 
 /** Class representing the whole app. */
 class Server {
@@ -38,10 +39,7 @@ class Server {
 
     this.app.use(koaLogger(logger));
     let router = new Router();
-    router.all('/wechat', wechat(config.wechat).middleware(async (message, ctx) => {
-      console.log(message);
-      return 'hello';
-    }));
+    router.all('/wechat', wechat(config.wechat).middleware(wechat_handler));
     this.app.use(router.routes());
 
     this.server = this.app.listen(config.port, config.host);
