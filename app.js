@@ -1,5 +1,4 @@
-const winston = require('winston');
-const koaLogger = require('./lib/koa-logger');
+const winston = require('winston');const koaLogger = require('./lib/koa-logger');
 ['main'].forEach(label => {
   winston.loggers.add(label, {
     console: {
@@ -15,8 +14,10 @@ const EventEmitter = require('events');
 const logger = winston.loggers.get('main');
 const Koa = require('koa');
 const Router = require('koa-router');
+const serve = require('koa-static');
 const wechat = require('co-wechat');
 const wechat_handler = require('./lib/wechat-handlers');
+const history = require('./lib/history-api-fallback');
 
 /** Class representing the whole app. */
 class Server {
@@ -38,6 +39,8 @@ class Server {
     this.app.context.bus = new EventEmitter();
 
     this.app.use(koaLogger(logger));
+    this.app.use(history());
+    this.app.use(serve('public'));
     let router = new Router();
     router.all('/wechat', wechat(config.wechat).middleware(wechat_handler));
     this.app.use(router.routes());

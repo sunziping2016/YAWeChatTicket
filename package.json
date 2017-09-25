@@ -2,7 +2,6 @@
   "name": "ya-wechat-ticket",
   "version": "0.1.0",
   "description": "Yet another WeChat Ticket",
-  "main": "index.js",
   "scripts": {
     "start": "node app",
     "test": "mocha 'test/**/*.js'",
@@ -17,12 +16,13 @@
   "bugs": {
     "url": "https://github.com/sunziping2016/YAWeChatTicket/issues"
   },
-  "homepage": "https://github.com/sunziping2016/YAWeChatTicket#readme",
+  "homepage": "https://github.com/sunziping2016/YAWeChatTicket#README.md",
   "dependencies": {
     "chalk": "^2.1.0",
     "co-wechat": "^2.3.0",
     "koa": "^2.3.0",
     "koa-router": "^7.2.1",
+    "koa-static": "^4.0.1",
     "mongoose": "^4.11.12",
     "winston": "^2.3.1"
   },
