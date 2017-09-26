@@ -1,90 +1,45 @@
 const winston = require('winston');
-const koaLogger = require('./lib/koa-logger');
-
 const cluster = require('cluster');
-const numCPUs = require('os').cpus().length;
 const process = require('process');
-const EventEmitter = require('events');
-const Koa = require('koa');
-const Router = require('koa-router');
-const serve = require('koa-static');
-const wechat = require('co-wechat');
-const mongoose = require('mongoose');
-const wechatHandler = require('./lib/wechat-handlers');
-const history = require('./lib/history-api-fallback');
-const models = require('./lib/models');
+const Server = require('./lib/server');
+const config = require('./config.json');
 
-mongoose.Promise = global.Promise;
-
-/** Class representing the whole app. */
-class Server {
-  /**
-   * Create the server.
-   * @param {object} config - See config file.
-   * @param {object} logger - Logger. Defaults to `console`
-   */
-  constructor(config, logger) {
-    this.config = config;
-    this.logger = logger || console;
+winston.loggers.add('main', {
+  console: {
+    level: 'info',
+    colorize: true,
+    label: `${
+      config.cluster ? (cluster.isMaster ? 'Master' : 'Worker') : 'Main'
+    } ${process.pid}`
   }
+});
 
-  /**
-   * Start the server.
-   * @returns {Promise.<void>} Fulfilled when ready.
-   */
-  async start() {
-    const config = this.config;
-    await mongoose.connect(config.db, {useMongoClient: true});
-    this.app = new Koa();
-    this.app.context.logger = this.logger;
-    this.app.context.models = await models(config);
-    this.app.use(koaLogger(this.logger));
-    const router = new Router(),
-      wechatMiddleware = wechat(config.wechat).middleware(
-        await wechatHandler(this.app, config));
-    router.get('/wechat', wechatMiddleware)
-      .post('/wechat', wechatMiddleware);
-    router.get('/uploads', serve('uploads'));
-    this.app.use(router.routes());
-    this.app.use(history());
-    this.app.use(serve('public'));
+const logger = winston.loggers.get('main');
 
-    this.server = this.app.listen(config.port, config.host);
-    this.logger.info('Server starts');
-  }
+process.on('uncaughtException', function (err) {
+  logger.error('uncaughtException');
+  logger.error(err);
+});
+process.on('unhandledRejection', function (err) {
+  logger.error('unhandledRejection');
+  logger.error(err);
+});
+process.on('warning', function (warn) {
+  logger.warning(warn);
+});
 
-  /**
-   * Stop the server cleanly.
-   * @returns {Promise.<void>} Fulfilled when exited.
-   */
-  async stop() {
-    await mongoose.disconnect();
-    if (this.server) {
-      await new Promise((resolve, reject) => this.server.close(resolve));
-      delete this.server;
-    }
-    this.logger.info('Server stops');
-  }
-}
-
-module.exports = Server;
-
-if (!module.parent) {
-  winston.loggers.add('main', {
-    console: {
-      level: 'info',
-      colorize: true,
-      label: `${cluster.isMaster ? 'Master' : 'Worker'} ${process.pid}`
-    }
-  });
-  const logger = winston.loggers.get('main');
-
+if (config.cluster) {
+  if (config.cluster === true)
+    config.cluster = require('os').cpus().length;
   if (cluster.isMaster) {
     logger.info('Process starts');
 
     const workers = new Set();
-    for (let i = 0; i < numCPUs; i++)
-      workers.add(cluster.fork());
+    for (let i = 0; i < config.cluster; i++)
+      workers.add(cluster.fork({
+        WORKER_NUM: config.cluster,
+        WORKER_INDEX: i
+      }));
 
     let confirmTimeout = null;
     cluster.on('exit', (worker, code, signal) => {
@@ -93,7 +48,7 @@ if (!module.parent) {
         clearTimeout(confirmTimeout);
         confirmTimeout = null;
       }
-      if (worker.size === 0)
+      if (workers.size === 0)
         logger.info('Process stops');
     });
     process.on('SIGINT', () => {
@@ -108,16 +63,50 @@ if (!module.parent) {
       }
     });
   } else {
-    const server = new Server(require('./config.json'), logger);
-    server.start().catch(err => logger.error(err));
+    const server = new Server(config, logger);
+    server.start().catch(function (err) {
+      logger.error('Error when starting server');
+      logger.error(err)
+    });
 
-    process.on('uncaughtException', err => logger.error(err));
-    process.on('unhandledRejection', err => logger.error(err));
-    process.on('warning', warning => logger.warn(warning));
     process.on('SIGINT', () => {
       server.stop()
         .then(() => process.exit())
-        .catch(err => logger.error(err));
+        .catch(function (err) {
+          logger.error('Error when stopping server');
+          logger.error(err)
+        });
     });
   }
+} else {
+  process.env.WORKER_NUM = '1';
+  process.env.WORKER_INDEX = '0';
+  const server = new Server(config, logger);
+  server.start().catch(function (err) {
+    logger.error('Error when starting server');
+    logger.error(err)
+  });
+
+  let confirmTimeout = null;
+  process.on('SIGINT', () => {
+    if (confirmTimeout !== null) {
+      logger.warn('Received SIGINT again. Force stop!');
+      process.exit(1);
+    } else {
+      logger.info('Received SIGINT. Press CTRL-C again in 5s to force stop.');
+      confirmTimeout = setTimeout(() => {
+        confirmTimeout = null;
+      }, 5000);
+      server.stop()
+        .then(() => {
+          clearTimeout(confirmTimeout);
+          confirmTimeout = null;
+        })
+        .catch(function (err) {
+          logger.error('Error when stopping server');
+          logger.error(err)
+        });
+    }
+  });
 }
+
