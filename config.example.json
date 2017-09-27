@@ -1,0 +1,13 @@
+{
+  "host": "localhost",
+  "port": 8000,
+  "site": "https://your.domain",
+  "db": "mongodb://localhost/ticket",
+  "wechat": {
+    "token": "WECHAT_TOKEN",
+    "appid": "WECHAT_APPID",
+    "appsecret": "WECHAT_APPSECRET",
+    "encodingAESKey": "WECHAT_ENCODING_AES_KEY"
+  },
+  "cluster": false
+}
