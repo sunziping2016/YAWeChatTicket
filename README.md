@@ -24,7 +24,7 @@ cp config.example.json config.json
 ## RESTful API
 ### 用户创建、管理`/api/user`
 * GET `/api/user`：管理员权限find
-* POST `/api/user/bind`: 微信端用户绑定（） 
-* POST `/api/user/:id`：网页端（绑定id.tsinghua）创建用户（微信端用户是自动在程序启动或用户关注时创建的）
+* POST `/api/user/bind`: 用户绑定微信
+* POST `/api/user`：网页端（绑定id.tsinghua）创建用户（微信端用户是自动在程序启动或用户关注时创建的）
 * GET `/api/user/:id`：仅自己或管理员，需要
 * PUT/PATCH `/api/user/:id`：仅自己或管理员修改用户信息
