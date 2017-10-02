@@ -3,11 +3,13 @@
   "port": 8000,
   "site": "https://your.domain",
   "db": "mongodb://localhost/ticket",
+  "redis": "redis://localhost/",
   "wechat": {
     "token": "WECHAT_TOKEN",
     "appid": "WECHAT_APPID",
     "appsecret": "WECHAT_APPSECRET",
     "encodingAESKey": "WECHAT_ENCODING_AES_KEY"
   },
-  "cluster": false
+  "cluster": false,
+  "loglevel": "info"
 }

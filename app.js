@@ -44,7 +44,6 @@ if (config.cluster) {
       workers.delete(worker);
       if (workers.size === 0 && confirmTimeout !== null) {
         clearTimeout(confirmTimeout);
-        confirmTimeout = null;
       }
       if (workers.size === 0)
         logger.info('Master stops');
@@ -100,7 +99,6 @@ if (config.cluster) {
       server.stop()
         .then(function () {
           clearTimeout(confirmTimeout);
-          confirmTimeout = null;
         })
         .catch(function (err) {
           logger.error('Error when stopping server');
