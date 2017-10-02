@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/sunziping2016/YAWeChatTicket#README.md",
   "dependencies": {
+    "@koa/cors": "^2.2.1",
     "ajv": "^5.2.3",
     "ajv-async": "^0.1.0",
     "ajv-keywords": "^2.1.0",
