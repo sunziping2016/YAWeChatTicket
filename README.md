@@ -22,6 +22,10 @@ cp config.example.json config.json
 每个用户都潜在可以有两个可绑定的账号：一个是微信，还有一个是id.tsinghua的。用户可以在注册后期绑定。
 
 ## RESTful API
+### 验证身份
+
+
+
 ### 用户创建、管理`/api/user`
 * GET `/api/user`：管理员权限find
 * POST `/api/user/bind`: 用户绑定微信

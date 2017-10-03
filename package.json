@@ -35,9 +35,11 @@
     "koa-router": "^7.2.1",
     "koa-static": "^4.0.1",
     "mongoose": "^4.11.12",
+    "nodemailer": "^4.1.1",
     "redis": "^2.8.0",
     "request": "^2.82.0",
     "request-promise-native": "^1.0.5",
+    "socket.io": "^2.0.3",
     "winston": "^2.3.1"
   },
   "devDependencies": {
