@@ -1,7 +1,7 @@
 {
   "host": "localhost",
   "port": 8000,
-  "site": "https://your.domain",
+  "site": "https://YOUR.DOMAIN",
   "db": "mongodb://localhost/ticket",
   "redis": "redis://localhost/",
   "wechat": {
@@ -10,6 +10,16 @@
     "appsecret": "WECHAT_APPSECRET",
     "encodingAESKey": "WECHAT_ENCODING_AES_KEY"
   },
+  "email-transport": {
+    "host": "SMTP.SITE",
+    "port": 465,
+    "secure": true,
+    "auth": {
+      "user": "EMAIL_USERNAME",
+      "pass": "EMAIL_PASSWORD"
+    }
+  },
   "cluster": false,
+  "sticky": false,
   "loglevel": "info"
 }
