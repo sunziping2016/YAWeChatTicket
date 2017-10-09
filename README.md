@@ -91,5 +91,8 @@ cp config.example.json config.json
 
 
 ## Redis
-### 临时`login`回话
-主要为了避免重放攻击。包含可选的`uid`和`wid`
+### 临时`token`回话
+主要为了避免重放攻击。包含可选的`uid`和`wid`。
+
+### 临时`user`回话
+主要存储用户信息。
