@@ -19,6 +19,11 @@
       "pass": "EMAIL_PASSWORD"
     }
   },
+  "tsinghua-proxy": {
+    "type": "socks5",
+    "host": "localhost",
+    "port": 1080
+  },
   "cluster": false,
   "sticky": false,
   "loglevel": "info"

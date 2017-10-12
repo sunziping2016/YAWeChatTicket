@@ -1,0 +1,24 @@
+{
+  "host": "localhost",
+  "port": 49342,
+  "site": "https://wx.szp15.cn",
+  "db": "mongodb://wxticket:teiRoo1u@localhost/test-ticket",
+  "redis": "redis://localhost/1",
+  "wechat": {
+    "token": "eiwai5aeh8aquoom4meiZeecheiy2che",
+    "appid": "wx61537e2afbd75980",
+    "appsecret": "e3dcc9be7caba067903b4cf099523fed",
+    "encodingAESKey": ""
+  },
+  "email-transport": {
+    "host": "smtp.exmail.qq.com",
+    "port": 465,
+    "secure": true,
+    "auth": {
+      "user": "noreply@szp.io",
+      "pass": "aiQu9yoh"
+    }
+  },
+  "cluster": false,
+  "loglevel": "info"
+}
