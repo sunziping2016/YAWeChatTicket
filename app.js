@@ -1,7 +1,5 @@
 const logger = require('winston');
 const cluster = require('cluster');
-const process = require('process');
-const config = require('./config.json');
 const parseArgs = require('minimist');
 
 process.on('uncaughtException', function (err) {
@@ -17,6 +15,9 @@ process.on('warning', function (warn) {
 });
 
 const argv = parseArgs(process.argv.slice(2));
+const config = argv.test ?
+  require('./config.test.json') :
+  require('./config.json');
 if (argv.host)
   config.host = argv.host;
 if (argv.port)
