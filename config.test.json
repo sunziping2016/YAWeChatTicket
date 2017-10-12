@@ -1,8 +1,8 @@
 {
   "host": "localhost",
-  "port": 49342,
+  "port": 49343,
   "site": "https://wx.szp15.cn",
-  "db": "mongodb://wxticket:teiRoo1u@localhost/test-ticket",
+  "db": "mongodb://wxticket:teiRoo1u@localhost/ticket",
   "redis": "redis://localhost/1",
   "wechat": {
     "token": "eiwai5aeh8aquoom4meiZeecheiy2che",
