@@ -26,5 +26,6 @@
   },
   "cluster": false,
   "sticky": false,
-  "loglevel": "info"
+  "loglevel": "info",
+  "static": false
 }
