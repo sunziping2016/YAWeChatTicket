@@ -22,7 +22,7 @@
       $setOnInsert: user
     }, {
       upsert: true
-    });
+    }).notDeleted();
   }
   await db.close();
 })();
