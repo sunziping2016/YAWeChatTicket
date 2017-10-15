@@ -1,0 +1,90 @@
+{
+  "users": {
+    "_id" : "59e352944f43de7acabc1cb6",
+    "deleted" : false,
+    "updatedAt" : "2017-10-15T12:20:36.493Z",
+    "createdAt" : "2017-10-15T12:20:36.493Z",
+    "username" : "hello",
+    "secureUpdatedAt" : "2017-10-15T12:20:36.493Z",
+    "roles" : [
+      "user"
+    ],
+    "password" : "$2a$10$AxCalGOLGLtQftjcN8a9MOz5DSQUsO0yIYqLywX1f9M9Oj/NsRPt."
+  },
+  "activities": [
+    {
+      "_id" : "59e21155750b9b5d0cb2b8e7",
+      "deleted" : false,
+      "updatedAt" : "2017-10-14T21:15:38.264Z",
+      "createdAt" : "2017-10-14T13:29:57.189Z",
+      "name" : "赶大作孽DDL！！",
+      "totalTickets" : 1,
+      "beginTime" : "2017-10-14T14:00:00.000Z",
+      "endTime" : "2017-10-15T16:00:00.000Z",
+      "bookBeginTime" : "2017-10-14T14:00:00.000Z",
+      "bookEndTime" : "2017-10-15T16:00:00.000Z",
+      "shortName" : "赶大作孽",
+      "place" : "我滴寝室",
+      "description" : "123",
+      "creator" : "59e210a9be34135c4a83023a",
+      "remainTickets" : 92,
+      "mainImage" : "AEkYvLbb3H125OaTvoh2hunjKrKqMDLhISFBgr7u.jpeg",
+      "titleImage" : "cMaJisRqWhGsdWCNnLzlSueyW1sSgQzJG0MtOx3v.jpeg",
+      "mainImageThumbnail" : "nsY2JeHc2Ild3gkMAwxEUN1t26uMK3sGUWzzc67h.png",
+      "titleImageThumbnail" : "TAvppZwBrfPtWlBEo7lSOwyG6cFTk1wsjHIkwJog.png",
+      "published" : true,
+      "checkedTickets" : 1
+    },
+    {
+      "_id" : "59e21155750b9b5d0cb2b8e8",
+      "deleted" : false,
+      "updatedAt" : "2017-10-14T21:15:38.264Z",
+      "createdAt" : "2017-10-14T13:29:57.189Z",
+      "name" : "赶大作孽DDL！！",
+      "totalTickets" : 1,
+      "beginTime" : "2017-10-14T14:00:00.000Z",
+      "endTime" : "2017-10-15T16:00:00.000Z",
+      "bookBeginTime" : "2017-10-14T14:00:00.000Z",
+      "bookEndTime" : "2017-10-15T16:00:00.000Z",
+      "shortName" : "赶大作孽",
+      "place" : "我滴寝室",
+      "description" : "123",
+      "creator" : "59e210a9be34135c4a83023a",
+      "remainTickets" : 92,
+      "mainImage" : "AEkYvLbb3H125OaTvoh2hunjKrKqMDLhISFBgr7u.jpeg",
+      "titleImage" : "cMaJisRqWhGsdWCNnLzlSueyW1sSgQzJG0MtOx3v.jpeg",
+      "mainImageThumbnail" : "nsY2JeHc2Ild3gkMAwxEUN1t26uMK3sGUWzzc67h.png",
+      "titleImageThumbnail" : "TAvppZwBrfPtWlBEo7lSOwyG6cFTk1wsjHIkwJog.png",
+      "published" : false,
+      "checkedTickets" : 1
+    },
+    {
+      "_id" : "59e21155750b9b5d0cb2b8e9",
+      "deleted" : false,
+      "updatedAt" : "2017-10-14T21:15:38.264Z",
+      "createdAt" : "2017-10-14T13:29:57.189Z",
+      "name" : "赶大作孽DDL！！",
+      "totalTickets" : 1,
+      "beginTime" : "2017-10-14T14:00:00.000Z",
+      "endTime" : "2017-10-15T16:00:00.000Z",
+      "bookBeginTime" : "2017-10-14T14:00:00.000Z",
+      "bookEndTime" : "2017-10-15T16:00:00.000Z",
+      "shortName" : "赶大作孽",
+      "place" : "我滴寝室",
+      "description" : "123",
+      "creator" : "59e352944f43de7acabc1cb6",
+      "remainTickets" : 92,
+      "mainImage" : "AEkYvLbb3H125OaTvoh2hunjKrKqMDLhISFBgr7u.jpeg",
+      "titleImage" : "cMaJisRqWhGsdWCNnLzlSueyW1sSgQzJG0MtOx3v.jpeg",
+      "mainImageThumbnail" : "nsY2JeHc2Ild3gkMAwxEUN1t26uMK3sGUWzzc67h.png",
+      "titleImageThumbnail" : "TAvppZwBrfPtWlBEo7lSOwyG6cFTk1wsjHIkwJog.png",
+      "published" : false,
+      "checkedTickets" : 1
+    }
+  ],
+  "tickets": [
+  ],
+  "tests": [
+
+  ]
+}

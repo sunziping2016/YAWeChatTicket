@@ -8,8 +8,18 @@ module.exports = function (config) {
             type: 'view',
             name: '账户',
             url: config.site + '/#/account'
+          },
+          {
+            type: 'click',
+            name: '查票',
+            key: 'FIND_TICKET'
+          },
+          {
+            type: 'click',
+            name: '抢啥',
+            key: 'FIND_ACTIVITY'
           }
-        ]
+        ],
       },
       {
         type: 'click',

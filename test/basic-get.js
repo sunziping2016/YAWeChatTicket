@@ -2,7 +2,7 @@ require('winston').level = 'error';
 const config = require('../config.test.json');
 const server = new (require('../lib/server'))(config);
 
-describe('Home Page', function() {
+describe('A hello world test', function() {
   let request;
 
   before(function (done) {
@@ -17,7 +17,7 @@ describe('Home Page', function() {
   });
 
   describe('when GET /', function () {
-    it('should return home page', function(done) {
+    it('should return a home page', function(done) {
       request
         .get('/')
         .expect('Content-Type', /html/)

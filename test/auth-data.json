@@ -1,0 +1,38 @@
+{
+  "users": [
+    {
+      "username": "hello",
+      "password": "world",
+      "roles": ["user"]
+    }
+  ],
+  "tests": [
+    {
+      "request": {
+        "strategy": "local",
+        "payload": {
+          "username": "hello",
+          "password": "world"
+        }
+      }
+    },
+    {
+      "request": {
+        "strategy": "local",
+        "payload": {
+          "username": "hello",
+          "password": "world123"
+        }
+      }
+    },
+    {
+      "request": {
+        "strategy": "local",
+        "payload": {
+          "username": "hello123",
+          "password": "world"
+        }
+      }
+    }
+  ]
+}
